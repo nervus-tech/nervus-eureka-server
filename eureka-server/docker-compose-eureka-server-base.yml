@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  app:
+    image: ghcr.io/nervus-tech/nervus-eureka-server:${TAG}
+    environment:
+      - SERVER_PORT=8761
+    networks:
+      - eureka-network

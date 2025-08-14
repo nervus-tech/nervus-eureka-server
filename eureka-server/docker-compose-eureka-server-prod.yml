@@ -1,17 +1,18 @@
 version: '3.8'
-
 services:
-  eureka-server-prod:
-    image: ghcr.io/nervus-tech/nervus-eureka-server:v1.0.0-prod
+  app:
+    extends:
+      file: docker-compose-eureka-server-base.yml
+      service: app
     container_name: eureka-server-prod
     ports:
       - "8116:8761"
     environment:
       - SPRING_PROFILES_ACTIVE=prod
-      - SERVER_PORT=8761
+      - TAG=v1.0.0-prod
     networks:
       - nervus-infrastructure_default
 
 networks:
   nervus-infrastructure_default:
-    external: true 
+    external: true

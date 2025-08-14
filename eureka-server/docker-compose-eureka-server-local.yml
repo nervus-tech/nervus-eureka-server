@@ -1,17 +1,18 @@
 version: '3.8'
-
 services:
-  eureka-server:
-    image: ghcr.io/nervus-tech/nervus-eureka-server:v1.0.0
+  app:
+    extends:
+      file: docker-compose-eureka-server-base.yml
+      service: app
     container_name: eureka-server-local
     ports:
       - "8114:8761"
     environment:
       - SPRING_PROFILES_ACTIVE=local
-      - SERVER_PORT=8761
+      - TAG=v1.0.0
     networks:
       - eureka-network
 
 networks:
   eureka-network:
-    driver: bridge 
+    driver: bridge

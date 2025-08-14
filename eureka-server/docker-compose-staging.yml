@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  eureka-server-staging:
+    image: ghcr.io/nervus-tech/nervus-eureka-server:v1.0.0-staging
+    container_name: eureka-server-staging
+    ports:
+      - "8115:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=staging
+      - SERVER_PORT=8761
+    networks:
+      - nervus-infrastructure_default
+
+networks:
+  nervus-infrastructure_default:
+    external: true 
